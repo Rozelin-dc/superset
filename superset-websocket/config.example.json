@@ -17,6 +17,6 @@
   },
   "redisStreamPrefix": "async-events-",
   "jwtAlgorithms": ["HS256"],
-  "jwtSecret": "CHANGE-ME",
+  "jwtSecret": "CHANGE-ME-testtesttesttestetetstetstetstetstaaatesttesttesttestetetstetstetstetstaaa",
   "jwtCookieName": "async-token"
 }
