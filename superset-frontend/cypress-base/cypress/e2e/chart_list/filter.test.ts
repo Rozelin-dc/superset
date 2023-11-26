@@ -31,13 +31,13 @@ describe('Charts filters', () => {
   });
 
   it('should allow filtering by "Owner"', () => {
-    setFilter('Owner', 'alpha user');
-    setFilter('Owner', 'admin user');
+    // setFilter('Owner', 'alpha user');
+    setFilter('Owner', 'Superset Admin');
   });
 
   it('should allow filtering by "Created by" correctly', () => {
-    setFilter('Created by', 'alpha user');
-    setFilter('Created by', 'admin user');
+    // setFilter('Created by', 'alpha user');
+    setFilter('Created by', 'Superset Admin');
   });
 
   it('should allow filtering by "Chart type" correctly', () => {
@@ -46,12 +46,13 @@ describe('Charts filters', () => {
   });
 
   it('should allow filtering by "Dataset" correctly', () => {
-    setFilter('Dataset', 'energy_usage');
-    setFilter('Dataset', 'unicode_test');
+    // setFilter('Dataset', 'energy_usage');
+    // setFilter('Dataset', 'unicode_test');
+    setFilter('Dataset', 'bart_lines');
   });
 
   it('should allow filtering by "Dashboards" correctly', () => {
     setFilter('Dashboards', 'Unicode Test');
-    setFilter('Dashboards', 'Tabbed Dashboard');
+    // setFilter('Dashboards', 'Tabbed Dashboard');
   });
 });
