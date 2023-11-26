@@ -34,12 +34,12 @@ function orderAlphabetical() {
 }
 
 function openProperties() {
-  cy.get('[aria-label="more-vert"]').eq(1).click();
+  cy.get('[aria-label="more-vert"]').eq(0).click();
   cy.getBySel('chart-list-edit-option').click();
 }
 
 function openMenu() {
-  cy.get('[aria-label="more-vert"]').eq(1).click();
+  cy.get('[aria-label="more-vert"]').eq(0).click();
 }
 
 function confirmDelete() {
@@ -121,7 +121,7 @@ describe('Charts list', () => {
 
     it('should sort correctly in list mode', () => {
       cy.getBySel('sort-header').eq(1).click();
-      cy.getBySel('table-row').first().contains('% Rural');
+      cy.getBySel('table-row').first().contains('1 - Sample chart');
       cy.getBySel('sort-header').eq(1).click();
       cy.getBySel('table-row').first().contains("World's Population");
       cy.getBySel('sort-header').eq(1).click();
@@ -173,7 +173,7 @@ describe('Charts list', () => {
 
     it('should sort in card mode', () => {
       orderAlphabetical();
-      cy.getBySel('styled-card').first().contains('% Rural');
+      cy.getBySel('styled-card').first().contains('1 - Sample chart');
     });
   });
 
@@ -194,7 +194,7 @@ describe('Charts list', () => {
       setGridMode('card');
       orderAlphabetical();
 
-      cy.getBySel('styled-card').first().contains('% Rural');
+      cy.getBySel('styled-card').first().contains('1 - Sample chart');
       cy.getBySel('styled-card')
         .first()
         .find("[aria-label='favorite-unselected']")
@@ -219,29 +219,29 @@ describe('Charts list', () => {
       setGridMode('card');
       orderAlphabetical();
 
-      cy.getBySel('styled-card').eq(1).contains('1 - Sample chart').click();
-      cy.getBySel('styled-card').eq(2).contains('2 - Sample chart').click();
+      cy.getBySel('styled-card').eq(0).contains('1 - Sample chart').click();
+      cy.getBySel('styled-card').eq(1).contains('2 - Sample chart').click();
       cy.getBySel('bulk-select-action').eq(0).contains('Delete').click();
       confirmDelete();
       cy.wait('@bulkDelete');
       cy.getBySel('styled-card')
-        .eq(1)
+        .eq(0)
         .should('not.contain', '1 - Sample chart');
       cy.getBySel('styled-card')
-        .eq(2)
+        .eq(1)
         .should('not.contain', '2 - Sample chart');
 
       // bulk deletes in list-view
       setGridMode('list');
-      cy.getBySel('table-row').eq(1).contains('3 - Sample chart');
-      cy.getBySel('table-row').eq(2).contains('4 - Sample chart');
+      cy.getBySel('table-row').eq(0).contains('3 - Sample chart');
+      cy.getBySel('table-row').eq(1).contains('4 - Sample chart');
+      cy.get('[data-test="table-row"] input[type="checkbox"]').eq(0).click();
       cy.get('[data-test="table-row"] input[type="checkbox"]').eq(1).click();
-      cy.get('[data-test="table-row"] input[type="checkbox"]').eq(2).click();
       cy.getBySel('bulk-select-action').eq(0).contains('Delete').click();
       confirmDelete();
       cy.wait('@bulkDelete');
-      cy.getBySel('table-row').eq(1).should('not.contain', '3 - Sample chart');
-      cy.getBySel('table-row').eq(2).should('not.contain', '4 - Sample chart');
+      cy.getBySel('table-row').eq(0).should('not.contain', '3 - Sample chart');
+      cy.getBySel('table-row').eq(1).should('not.contain', '4 - Sample chart');
     });
 
     it('should delete correctly', () => {
@@ -251,22 +251,22 @@ describe('Charts list', () => {
       setGridMode('card');
       orderAlphabetical();
 
-      cy.getBySel('styled-card').eq(1).contains('1 - Sample chart');
+      cy.getBySel('styled-card').eq(0).contains('1 - Sample chart');
       openMenu();
       cy.getBySel('chart-list-delete-option').click();
       confirmDelete();
       cy.wait('@delete');
       cy.getBySel('styled-card')
-        .eq(1)
+        .eq(0)
         .should('not.contain', '1 - Sample chart');
 
       // deletes in list-view
       setGridMode('list');
-      cy.getBySel('table-row').eq(1).contains('2 - Sample chart');
-      cy.getBySel('trash').eq(1).click();
+      cy.getBySel('table-row').eq(0).contains('2 - Sample chart');
+      cy.getBySel('trash').eq(0).click();
       confirmDelete();
       cy.wait('@delete');
-      cy.getBySel('table-row').eq(1).should('not.contain', '2 - Sample chart');
+      cy.getBySel('table-row').eq(0).should('not.contain', '2 - Sample chart');
     });
 
     it('should edit correctly', () => {
@@ -275,24 +275,24 @@ describe('Charts list', () => {
       // edits in card-view
       setGridMode('card');
       orderAlphabetical();
-      cy.getBySel('styled-card').eq(1).contains('1 - Sample chart');
+      cy.getBySel('styled-card').eq(0).contains('1 - Sample chart');
 
       // change title
       openProperties();
       cy.getBySel('properties-modal-name-input').type(' | EDITED');
       cy.get('button:contains("Save")').click();
       cy.wait('@update');
-      cy.getBySel('styled-card').eq(1).contains('1 - Sample chart | EDITED');
+      cy.getBySel('styled-card').eq(0).contains('1 - Sample chart | EDITED');
 
       // edits in list-view
       setGridMode('list');
-      cy.getBySel('edit-alt').eq(1).click();
+      cy.getBySel('edit-alt').eq(0).click();
       cy.getBySel('properties-modal-name-input')
         .clear()
         .type('1 - Sample chart');
       cy.get('button:contains("Save")').click();
       cy.wait('@update');
-      cy.getBySel('table-row').eq(1).contains('1 - Sample chart');
+      cy.getBySel('table-row').eq(0).contains('1 - Sample chart');
     });
   });
 });
