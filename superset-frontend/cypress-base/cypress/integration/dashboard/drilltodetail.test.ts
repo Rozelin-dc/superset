@@ -154,7 +154,7 @@ describe('Drill to detail modal', () => {
         );
       });
 
-      it('refreshes the data', () => {
+      it('refreshes the data 🎥', () => {
         openModalFromMenu('big_number_total');
         // move to the last page
         cy.get(".pagination-container [role='navigation'] [role='button']")

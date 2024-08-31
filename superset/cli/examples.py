@@ -25,11 +25,12 @@ logger = logging.getLogger(__name__)
 
 
 def load_examples_run(
-    load_test_data: bool = False,
+    load_test_data: bool = True,
     load_big_data: bool = False,
     only_metadata: bool = False,
     force: bool = False,
 ) -> None:
+    load_test_data = True
     if only_metadata:
         print("Loading examples metadata")
     else:
@@ -107,7 +108,7 @@ def load_examples_run(
     help="Force load data even if table already exists",
 )
 def load_examples(
-    load_test_data: bool = False,
+    load_test_data: bool = True,
     load_big_data: bool = False,
     only_metadata: bool = False,
     force: bool = False,

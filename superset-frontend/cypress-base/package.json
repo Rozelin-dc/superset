@@ -5,7 +5,8 @@
   "scripts": {
     "cypress": "cypress",
     "cypress-run-chrome": "cypress run --browser chrome --headless",
-    "cypress-debug": "cypress open --config watchForFileChanges=true"
+    "cypress-debug": "cypress open --config watchForFileChanges=true",
+    "cypress:movie": "cypress-movie --browser electron --format mp4"
   },
   "author": "Apache",
   "license": "Apache-2.0",
@@ -23,7 +24,9 @@
   "devDependencies": {
     "@types/querystringify": "^2.0.0",
     "cypress": "^7.0.0",
-    "eslint-plugin-cypress": "^2.12.1"
+    "cypress-movie": "^3.0.20",
+    "eslint-plugin-cypress": "^2.12.1",
+    "typescript": "^5.5.4"
   },
   "nyc": {
     "reporter": [

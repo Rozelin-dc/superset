@@ -6,7 +6,7 @@
   "experimentalFetchPolyfill": true,
   "requestTimeout": 10000,
   "ignoreTestFiles": ["**/!(*.test.js|*.test.ts)", "*.applitools.test.ts"],
-  "video": false,
+  "video": true,
   "videoUploadOnPasses": false,
   "viewportWidth": 1280,
   "viewportHeight": 1024,
@@ -14,5 +14,6 @@
   "retries": {
     "runMode": 2,
     "openMode": 0
-  }
+  },
+  "nodeVersion": "system"
 }

@@ -18,6 +18,7 @@
  */
 import '@cypress/code-coverage/support';
 import '@applitools/eyes-cypress/commands';
+import 'cypress-movie/commands'
 
 require('cy-verify-downloads').addCustomCommand();
 
@@ -136,7 +137,7 @@ Cypress.Commands.add('login', () => {
   cy.request({
     method: 'POST',
     url: '/login/',
-    body: { username: 'admin', password: 'general' },
+    body: { username: 'admin', password: 'admin' },
   }).then(response => {
     expect(response.status).to.eq(200);
   });
